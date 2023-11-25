@@ -1,5 +1,5 @@
 /// <reference path="eidos.d.ts" />
-export default async function (input, context) {
+export default async function (_input, context) {
     const getAllMyGames = (userName) => {
         let allGames = [];
         let startUrl = `https://api.rawg.io/api/users/${userName}/games?page=1`;
@@ -20,7 +20,7 @@ export default async function (input, context) {
         };
         return getGames(startUrl);
     };
-    const games = await getAllMyGames(input.username);
+    const games = await getAllMyGames(context.env.username);
     const tableName = context.tables.game.name;
     const fieldMap = context.tables.game.fieldsMap;
     for (const game of games) {

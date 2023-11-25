@@ -2,6 +2,7 @@
 
 interface Env {
   // add your environment variables here
+  username: string;
 }
 
 interface IGameItem {
@@ -18,7 +19,6 @@ interface Table {
 
 interface Input {
   // add your input fields here
-  username: string;
 }
 
 interface Context {
@@ -27,7 +27,7 @@ interface Context {
   currentRowId?: string;
 }
 
-export default async function (input: Input, context: Context) {
+export default async function (_input: Input, context: Context) {
   const getAllMyGames = (userName: string) => {
     let allGames: IGameItem[] = [];
     let startUrl = `https://api.rawg.io/api/users/${userName}/games?page=1`;
@@ -48,7 +48,7 @@ export default async function (input: Input, context: Context) {
     return getGames(startUrl);
   };
 
-  const games = await getAllMyGames(input.username);
+  const games = await getAllMyGames(context.env.username);
 
   const tableName = context.tables.game.name;
   const fieldMap = context.tables.game.fieldsMap;

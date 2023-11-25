@@ -6,14 +6,7 @@
     "main": "src/main.js",
     "inputJSONSchema": {
         "type": "object",
-        "properties": {
-            "username": {
-                "type": "string"
-            }
-        },
-        "required": [
-            "username"
-        ]
+        "properties": {}
     },
     "outputJSONSchema": {
         "type": "object",
@@ -47,6 +40,12 @@
                     "type": "string"
                 }
             ]
+        }
+    ],
+    "envs": [
+        {
+            "name": "username",
+            "type": "string"
         }
     ]
 }
