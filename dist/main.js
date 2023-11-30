@@ -1,38 +1,9 @@
-import { Eidos, EidosTable } from "@eidos.space/types";
-declare const eidos: Eidos;
-
-interface Env {
-  // add your environment variables here
-  username: string;
-}
-
-interface IGameItem {
-  name: string;
-  slug: string;
-  background_image: string;
-  released: string;
-}
-
-interface Table {
-  // add your tables here
-  game: EidosTable<IGameItem>;
-}
-
-interface Input {
-  // add your input fields here
-}
-
-interface Context {
-  env: Env;
-  tables: Table;
-  currentRowId?: string;
-}
-
-export default async function (_input: Input, context: Context) {
-  const getAllMyGames = (userName: string) => {
-    let allGames: IGameItem[] = [];
+// src/main.ts
+async function main_default(_input, context) {
+  const getAllMyGames = (userName) => {
+    let allGames = [];
     let startUrl = `https://api.rawg.io/api/users/${userName}/games?page=1`;
-    const getGames = async (url: string): Promise<IGameItem[]> => {
+    const getGames = async (url) => {
       const resp = await fetch(url);
       const data = await resp.json();
       allGames = allGames.concat(data.results);
@@ -44,15 +15,10 @@ export default async function (_input: Input, context: Context) {
     };
     return getGames(startUrl);
   };
-
   const games = await getAllMyGames(context.env.username);
-
   const tableId = context.tables.game.id;
   const fieldMap = context.tables.game.fieldsMap;
-  const oldGames: IGameItem[] = await eidos.currentSpace
-    .table(tableId)
-    .rows.query();
-
+  const oldGames = await eidos.currentSpace.table(tableId).rows.query();
   for (const game of games) {
     const { name, slug, background_image, released } = game;
     const existingGame = oldGames.find((g) => g.slug === slug);
@@ -64,9 +30,12 @@ export default async function (_input: Input, context: Context) {
         [fieldMap.name]: name,
         [fieldMap.slug]: slug,
         [fieldMap.background_image]: background_image,
-        [fieldMap.released]: released,
+        [fieldMap.released]: released
       },
       { useFieldId: true }
     );
   }
 }
+export {
+  main_default as default
+};

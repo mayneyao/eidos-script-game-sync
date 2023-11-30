@@ -2,8 +2,8 @@
     "id": "game-sync",
     "name": "Game Sync",
     "description": "Sync game data from rawig.io",
-    "version": "0.0.1",
-    "main": "src/main.js",
+    "version": "0.0.2",
+    "main": "dist/main.js",
     "inputJSONSchema": {
         "type": "object",
         "properties": {}
