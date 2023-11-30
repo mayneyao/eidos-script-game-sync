@@ -1,10 +1,10 @@
 # Game Sync
 
-an script which helps you sync your game list into Eidos table.
+a script which helps you sync your game list into Eidos table.
 
 ## How to use
 
-1. get a https://rawg.io account, click you avatar, you will be jump to your profile page, the url is like `https://rawg.io/@<username>/games`, copy username.
+1. get a https://rawg.io account, click you `My library`, you will be jump to your libbrary page, the url is like `https://rawg.io/@<username>/games`, copy username.
 
 2. install this script from Eidos Store or install from github directly.
 
