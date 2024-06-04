@@ -4,21 +4,27 @@
     "description": "Sync game data from rawig.io",
     "version": "0.0.2",
     "main": "dist/main.js",
-    "inputJSONSchema": {
-        "type": "object",
-        "properties": {}
-    },
-    "outputJSONSchema": {
-        "type": "object",
-        "properties": {
-            "ok": {
-                "type": "boolean"
+    "commands": [
+        {
+            "name": "pull",
+            "description": "pull game data",
+            "inputJSONSchema": {
+                "type": "object",
+                "properties": {}
+            },
+            "outputJSONSchema": {
+                "type": "object",
+                "properties": {
+                    "ok": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "ok"
+                ]
             }
-        },
-        "required": [
-            "ok"
-        ]
-    },
+        }
+    ],
     "tables": [
         {
             "name": "game",
