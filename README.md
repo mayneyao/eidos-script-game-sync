@@ -10,6 +10,6 @@ a script which helps you sync your game list into Eidos table.
 
 3. config your username in script setting page. bind table and field with created table.
 
-4. `ctrl/cmd` + `k`, press `!` you will see the command `Game Sync`, press `enter` to run it.
+4. `ctrl/cmd` + `k`, press `/` you will see the command `Game Sync`, press `enter` to run it.
 
 5. enjoy it.
